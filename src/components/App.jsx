@@ -11,8 +11,8 @@ import SignInPage from './SignIn';
 import PasswordForgetPage from './PasswordForget';
 import HomePage from './Home';
 import AccountPage from './Account';
-
-const routes = require('../constants/routes');
+import * as routes from '../constants/routes';
+import withAuthentication from './withAuthentication';
 
 const App = () =>
   (
@@ -56,4 +56,4 @@ const App = () =>
     </Router>
   );
 
-export default App;
+export default withAuthentication(App);
