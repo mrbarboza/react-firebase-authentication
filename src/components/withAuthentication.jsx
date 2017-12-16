@@ -33,7 +33,7 @@ const withAuthentication = (Component) => {
     }
   }
 
-  WithAuthentication.childContextType = {
+  WithAuthentication.childContextTypes = {
     authUser: PropTypes.object,
   };
 
