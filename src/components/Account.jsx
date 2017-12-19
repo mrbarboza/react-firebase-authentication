@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { PasswordForgetForm } from './PasswordForget';
 import PasswordChangeForm from './PasswordChange';
+import withAuthorization from './withAuthentication';
 
 const AccountPage = (props, { authUser }) =>
   (
@@ -17,4 +18,6 @@ AccountPage.contextType = {
   authUser: PropTypes.object,
 };
 
-export default AccountPage;
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(AccountPage);
