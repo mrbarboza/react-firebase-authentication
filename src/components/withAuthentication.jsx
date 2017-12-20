@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { firebase } from '../firebase';
 
 const withAuthentication = (Component) => {
-  class WithAuthentication extends React.Component {
+  return class extends React.Component {
     constructor(props) {
       super(props);
 
@@ -31,13 +30,7 @@ const withAuthentication = (Component) => {
         <Component />
       );
     }
-  }
-
-  WithAuthentication.childContextTypes = {
-    authUser: PropTypes.object,
   };
-
-  return WithAuthentication;
 };
 
 export default withAuthentication;
