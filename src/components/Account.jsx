@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { PasswordForgetForm } from './PasswordForget';
 import PasswordChangeForm from './PasswordChange';
-import withAuthorization from './withAuthentication';
+import withAuthorization from './withAuthorization';
 
 const AccountPage = (props, { authUser }) =>
   (
