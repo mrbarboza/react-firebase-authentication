@@ -32,9 +32,12 @@ class SignUpForm extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onSubmit(event) {
+  handleSubmit(event) {
+    event.preventDefault();
+
     const {
       username,
       email,
@@ -59,8 +62,6 @@ class SignUpForm extends Component {
       .catch((error) => {
         this.setState(byPropKey('error', error));
       });
-
-    event.preventDefault();
   }
 
   render() {
@@ -79,7 +80,7 @@ class SignUpForm extends Component {
       username === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <input
           value={username}
           onChange={event => this.setState(byPropKey('username', event.target.value))}
