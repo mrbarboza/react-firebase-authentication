@@ -1,3 +1,4 @@
+// Example Page for Administrator
 import React from 'react';
 import PropTypes from 'prop-types';
 import withAuthorization from './withAuthorization';
