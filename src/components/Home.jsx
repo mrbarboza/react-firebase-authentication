@@ -9,12 +9,14 @@ class HomePage extends Component {
     super(props);
 
     this.state = {
-      users: null,
+      users: {},
     };
   }
 
+
   componentDidMount() {
-    db.onceGetUsers().then(snapshot => this.setState(() => ({ users: snapshot.val() })));
+    db.onceGetUsers()
+      .then(snapshot => this.setState(() => ({ users: snapshot.val() })));
   }
 
   render() {

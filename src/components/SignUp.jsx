@@ -3,6 +3,7 @@ import {
   Link,
   withRouter,
 } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { auth, db } from '../firebase';
 import * as routes from '../constants/routes';
@@ -14,6 +15,10 @@ const SignUpPage = ({ history }) =>
       <SignUpForm history={history} />
     </div>
   );
+
+SignUpPage.propTypes = {
+  history: PropTypes.string.isRequired,
+};
 
 const INITIAL_STATE = {
   username: '',
@@ -32,10 +37,9 @@ class SignUpForm extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(event) {
+  onSubmit = (event) => {
     event.preventDefault();
 
     const {
@@ -80,7 +84,7 @@ class SignUpForm extends Component {
       username === '';
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.onSubmit}>
         <input
           value={username}
           onChange={event => this.setState(byPropKey('username', event.target.value))}
@@ -118,7 +122,7 @@ class SignUpForm extends Component {
 const SignUpLink = () =>
   (
     <p>
-      Don't have an account?
+      {" Don't have an account? "}
       {' '}
       <Link to={routes.SIGN_UP}>Sign Up</Link>
     </p>

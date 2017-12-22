@@ -25,10 +25,9 @@ class PasswordForgetForm extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(event) {
+  onSubmit = (event) => {
     const { email } = this.state;
 
     auth.doPasswordReset(email)
@@ -51,7 +50,7 @@ class PasswordForgetForm extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.onSubmit}>
         <input
           value={this.state.email}
           onChange={event => this.setState(byPropKey('email', event.target.value))}

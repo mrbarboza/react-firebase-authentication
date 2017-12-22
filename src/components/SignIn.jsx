@@ -31,10 +31,9 @@ class SignInForm extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(event) {
+  onSubmit = (event) => {
     const {
       email,
       password,
@@ -68,7 +67,7 @@ class SignInForm extends Component {
       email === '';
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.onSubmit}>
         <input
           value={email}
           onChange={event => this.setState(byPropKey('email', event.target.value))}
