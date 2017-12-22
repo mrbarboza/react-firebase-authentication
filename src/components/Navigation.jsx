@@ -7,7 +7,7 @@ import * as routes from '../constants/routes';
 
 const Navigation = (props, { authUser }) =>
   (
-    <div>
+    <div className="navbar">
       {
         authUser
           ? <NavigationAuth />
@@ -33,8 +33,8 @@ const NavigationAuth = () =>
 const NavigationNonAuth = () =>
   (
     <ul>
-      <li><Link to={routes.SIGN_IN}>Sign In</Link></li>
       <li><Link to={routes.LANDING}>Landing</Link></li>
+      <li><Link to={routes.SIGN_IN}>Sign In</Link></li>
     </ul>
   );
 
