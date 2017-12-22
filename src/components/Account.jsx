@@ -14,7 +14,7 @@ const AccountPage = (props, { authUser }) =>
     </div>
   );
 
-AccountPage.contextType = {
+AccountPage.contextTypes = {
   authUser: PropTypes.object,
 };
 
