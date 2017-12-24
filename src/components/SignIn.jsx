@@ -8,7 +8,7 @@ import * as routes from '../constants/routes';
 
 const SignInPage = ({ history }) =>
   (
-    <div>
+    <div className="container">
       <h1>Sign In</h1>
       <SignInForm history={history} />
       <PasswordForgetLink />
@@ -67,24 +67,41 @@ class SignInForm extends Component {
       email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          value={password}
-          onChange={event => this.setState(byPropKey('password', event.target.value))}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
+      <form id="signInForm" onSubmit={this.onSubmit}>
+        <br />
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <input
+              id="signInEmail"
+              value={email}
+              onChange={event => this.setState(byPropKey('email', event.target.value))}
+              className="form-control"
+              type="text"
+              placeholder="Email Address"
+            />
+          </div>
+        </div>
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <input
+              id="signInPassword"
+              value={password}
+              onChange={event => this.setState(byPropKey('password', event.target.value))}
+              className="form-control"
+              type="password"
+              placeholder="Password"
+            />
+          </div>
+        </div>
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <button disabled={isInvalid} className="btn btn-primary" type="submit">
+              Sign In
+            </button>
+          </div>
+        </div>
 
-        { error && <p>{ error.message }</p> }
+        { error && <p className="alert alert-danger">{ error.message }</p> }
       </form>
     );
   }

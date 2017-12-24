@@ -45,24 +45,39 @@ class PasswordChangeForm extends Component {
       passwordOne === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={passwordOne}
-          onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
-          type="password"
-          placeholder="New Password"
-        />
-        <input
-          value={passwordTwo}
-          onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
-          type="password"
-          placeholder="Confirm New Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+      <form id="pcForm" onSubmit={this.onSubmit}>
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <input
+              id="pcPasswordOne"
+              value={passwordOne}
+              onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
+              className="form-control"
+              type="password"
+              placeholder="New Password"
+            />
+          </div>
+        </div>
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <input
+              value={passwordTwo}
+              onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
+              className="form-control"
+              type="password"
+              placeholder="Confirm New Password"
+            />
+          </div>
+        </div>
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <button disabled={isInvalid} className="btn btn-primary" type="submit">
+              Reset My Password
+            </button>
+          </div>
+        </div>
 
-        { error && <p>{ error.message }</p> }
+        { error && <p className="alert alert-danger">{ error.message }</p> }
       </form>
     );
   }

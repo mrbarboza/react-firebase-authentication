@@ -10,8 +10,8 @@ import * as routes from '../constants/routes';
 
 const SignUpPage = ({ history }) =>
   (
-    <div>
-      <h1>SignUp</h1>
+    <div className="container">
+      <h1>Sign Up</h1>
       <SignUpForm history={history} />
     </div>
   );
@@ -84,36 +84,65 @@ class SignUpForm extends Component {
       username === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={username}
-          onChange={event => this.setState(byPropKey('username', event.target.value))}
-          type="text"
-          placeholder="Full Name"
-        />
-        <input
-          value={email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          value={passwordOne}
-          onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          value={passwordTwo}
-          onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign Up
-        </button>
+      <form id="signUpForm" onSubmit={this.onSubmit}>
+        <br />
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <input
+              id="signUpUsername"
+              value={username}
+              onChange={event => this.setState(byPropKey('username', event.target.value))}
+              className="form-control"
+              type="text"
+              placeholder="Full Name"
+            />
+          </div>
+        </div>
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <input
+              id="signUpEmail"
+              value={email}
+              onChange={event => this.setState(byPropKey('email', event.target.value))}
+              className="form-control"
+              type="text"
+              placeholder="Email Address"
+            />
+          </div>
+        </div>
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <input
+              id="signUpPasswordOne"
+              value={passwordOne}
+              onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
+              className="form-control"
+              type="password"
+              placeholder="Password"
+            />
+          </div>
+        </div>
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <input
+              id="signUpPasswordTwo"
+              value={passwordTwo}
+              onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
+              className="form-control"
+              type="password"
+              placeholder="Confirm Password"
+            />
+          </div>
+        </div>
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <button disabled={isInvalid} className="btn btn-primary" type="submit">
+              Sign Up
+            </button>
+          </div>
+        </div>
 
-        { error && <p>{error.message}</p> }
+        { error && <p className="alert alert-danger">{error.message}</p> }
       </form>
     );
   }

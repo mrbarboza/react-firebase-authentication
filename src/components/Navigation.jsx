@@ -7,13 +7,13 @@ import * as routes from '../constants/routes';
 
 const Navigation = (props, { authUser }) =>
   (
-    <div className="navbar">
+    <nav className="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
       {
         authUser
           ? <NavigationAuth />
           : <NavigationNonAuth />
       }
-    </div>
+    </nav>
   );
 
 Navigation.contextTypes = {
@@ -22,20 +22,77 @@ Navigation.contextTypes = {
 
 const NavigationAuth = () =>
   (
-    <ul>
-      <li><Link to={routes.LANDING}>Landing</Link></li>
-      <li><Link to={routes.HOME}>Home</Link></li>
-      <li><Link to={routes.ACCOUNT}>Account</Link></li>
-      <li><SignOutButton /></li>
-    </ul>
+    <div
+      className="collapse navbar-collapse"
+      id="navbarCollapse"
+    >
+      <ul
+        className="navbar-nav mr-auto"
+      >
+        <li className="nav-item">
+          <Link
+            className="nav-link"
+            to={routes.LANDING}
+          >
+          Landing
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="nav-link"
+            to={routes.HOME}
+          >
+          Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="nav-link"
+            to={routes.ACCOUNT}
+          >
+          Account
+          </Link>
+        </li>
+      </ul>
+      <form
+        className="form-inline mt-2 mt-md-0"
+      >
+        <SignOutButton />
+      </form>
+    </div>
   );
 
 const NavigationNonAuth = () =>
   (
-    <ul>
-      <li><Link to={routes.LANDING}>Landing</Link></li>
-      <li><Link to={routes.SIGN_IN}>Sign In</Link></li>
-    </ul>
+    <div
+      className="collapse navbar-collapse"
+      id="navbarCollapse"
+    >
+      <ul
+        className="navbar-nav mr-auto"
+      >
+        <li
+          className="nav-item active"
+        >
+          <Link
+            className="nav-link"
+            to={routes.LANDING}
+          >
+          Landing
+          </Link>
+        </li>
+      </ul>
+      <form
+        className="form-inline mt-2 mt-md-0"
+      >
+        <Link
+          className="nav-link"
+          to={routes.SIGN_IN}
+        >
+        Sign In
+        </Link>
+      </form>
+    </div>
   );
 
 export default Navigation;

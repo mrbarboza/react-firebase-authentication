@@ -5,8 +5,8 @@ import { auth } from '../firebase';
 
 const PasswordForgetPage = () =>
   (
-    <div>
-      <h1>PasswordForget</h1>
+    <div className="container">
+      <h1>Password Forget</h1>
       <PasswordForgetForm />
     </div>
   );
@@ -50,18 +50,28 @@ class PasswordForgetForm extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={this.state.email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+      <form id="pfForm" onSubmit={this.onSubmit}>
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <input
+              id="pfEmail"
+              value={this.state.email}
+              onChange={event => this.setState(byPropKey('email', event.target.value))}
+              className="form-control"
+              type="text"
+              placeholder="Email Address"
+            />
+          </div>
+        </div>
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <button disabled={isInvalid} className="btn btn-primary" type="submit">
+              Reset My Password
+            </button>
+          </div>
+        </div>
 
-        { error && <p>{ error.message }</p> }
+        { error && <p className="alert alert-danger">{ error.message }</p> }
       </form>
     );
   }

@@ -6,6 +6,7 @@ const SignOutButton = () =>
   (
     <button
       type="button"
+      className="btn btn-outline-danger"
       onClick={auth.doSignOut}
     >
       Sign Out
