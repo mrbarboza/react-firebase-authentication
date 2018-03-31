@@ -29,14 +29,6 @@ const NavigationAuth = () =>
       <ul
         className="navbar-nav mr-auto"
       >
-        <li className="nav-item">
-          <Link
-            className="nav-link"
-            to={routes.LANDING}
-          >
-          Landing
-          </Link>
-        </li>
         <li>
           <Link
             className="nav-link"
