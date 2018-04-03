@@ -33,6 +33,7 @@ class PasswordForgetForm extends Component {
 
     const { email } = this.state;
 
+    /* FIXME: Ajustar Envio de Email para Reset da Senha */
     auth.doPasswordReset(email)
       .then(() => {
         this.setState(() => (this.setState({ ...INITIAL_STATE })));
