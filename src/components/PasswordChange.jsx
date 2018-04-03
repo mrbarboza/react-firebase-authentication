@@ -19,7 +19,9 @@ class PasswordChangeForm extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onSubmit = (event) => {
+  handleSubmit = (event) => {
+    event.preventDefault();
+
     const { passwordOne } = this.state;
 
     auth.doPasswordUpdate(passwordOne)
@@ -29,8 +31,6 @@ class PasswordChangeForm extends Component {
       .catch((error) => {
         this.setState(byPropKey('error', error));
       });
-
-    event.preventDefault();
   }
 
   render() {
@@ -45,7 +45,7 @@ class PasswordChangeForm extends Component {
       passwordOne === '';
 
     return (
-      <form id="pcForm" onSubmit={this.onSubmit}>
+      <form id="pcForm" onSubmit={this.handleSubmit}>
         <div className="form-group row">
           <div className="col-sm-10">
             <input
@@ -77,7 +77,7 @@ class PasswordChangeForm extends Component {
           </div>
         </div>
 
-        { error && <p className="alert alert-danger">{ error.message }</p> }
+        {error && <p className="alert alert-danger">{error.message}</p>}
       </form>
     );
   }

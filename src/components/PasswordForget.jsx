@@ -27,7 +27,9 @@ class PasswordForgetForm extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onSubmit = (event) => {
+  handleSubmit = (event) => {
+    event.preventDefault();
+
     const { email } = this.state;
 
     auth.doPasswordReset(email)
@@ -37,8 +39,6 @@ class PasswordForgetForm extends Component {
       .catch((error) => {
         this.setState(byPropKey('error', error));
       });
-
-    event.preventDefault();
   }
 
   render() {
@@ -50,7 +50,7 @@ class PasswordForgetForm extends Component {
     const isInvalid = email === '';
 
     return (
-      <form id="pfForm" onSubmit={this.onSubmit}>
+      <form id="pfForm" onSubmit={this.handleSubmit}>
         <div className="form-group row">
           <div className="col-sm-10">
             <input
@@ -71,7 +71,7 @@ class PasswordForgetForm extends Component {
           </div>
         </div>
 
-        { error && <p className="alert alert-danger">{ error.message }</p> }
+        {error && <p className="alert alert-danger">{error.message}</p>}
       </form>
     );
   }
